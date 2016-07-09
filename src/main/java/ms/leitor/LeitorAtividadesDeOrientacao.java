@@ -9,11 +9,11 @@ import java.util.regex.Matcher;
 /**
  * Created by Tiago on 09/07/2016.
  */
-public class LeitorAtividadesDeQualificação extends LeitorGenerico {
+public class LeitorAtividadesDeOrientacao extends LeitorGenerico {
 
-    public LeitorAtividadesDeQualificação(File entrada) throws IOException{
+    public LeitorAtividadesDeOrientacao(File entrada) throws IOException{
         super(entrada);
-        REGEX = "Atividades de qualificação[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?Atividades acadêmicas especiais";
+        REGEX = "Atividades de orientação([\\p{L}\\s-\\d\\W]+)Atividades em projetos";
     }
 
     @Override
@@ -24,11 +24,11 @@ public class LeitorAtividadesDeQualificação extends LeitorGenerico {
 
         if(matcher.find()){
             conteudoArquivo = matcher.group();
-            conteudoArquivo = conteudoArquivo.replaceAll("Atividades de qualificação","");
-            conteudoArquivo = conteudoArquivo.replaceAll("Atividades acadêmicas especiais","");
+            conteudoArquivo = conteudoArquivo.replaceAll("Atividades de orientação","");
+            conteudoArquivo = conteudoArquivo.replaceAll("Atividades em projetos","");
             conteudoArquivo = conteudoArquivo.replaceAll("[\\n\\r\\t]+"," ");
             String atividadesFormatadas = conteudoArquivo.replaceAll("\\r+","");
-            String[] arrayAtividades = atividadesFormatadas.split("Tabela:");
+            String[] arrayAtividades = atividadesFormatadas.split("Tipo Orientação:\\s\\w*\\s");
 
             atividades = paraArrayList(arrayAtividades);
         }
