@@ -94,4 +94,28 @@ public class ManipuladorGenerico {
 
         return modelos;
     }
+
+    public static List<ModeloAtividade> buscarAtividadesDeExtensao(List<String> atividades) {
+        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+
+        String REGEX = ".+?CHA:.+?(\\d+).+?Data início:.+?(\\d+\\/\\d+\\/\\d+).+?Data término:.+?(\\d+\\/\\d+\\/\\d+).+?Descrição da atividade:.+?(.+).+?Descrição da clientela:.+?(.+)";
+        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+
+        for(String atividade: atividades) {
+            Matcher matcher = pattern.matcher(atividade);
+
+            if (matcher.find()) {
+                String descrição = matcher.group(4) + " - " + matcher.group(5);
+                int qtdHoras = Integer.parseInt(matcher.group(1));
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+                DateTime dtInicio = formatter.parseDateTime(matcher.group(2));
+                DateTime dtFim = formatter.parseDateTime(matcher.group(3));
+
+                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
+                modelos.add(modelo);
+            }
+        }
+
+        return modelos;
+    }
 }
