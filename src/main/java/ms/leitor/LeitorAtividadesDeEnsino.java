@@ -15,7 +15,7 @@ public class LeitorAtividadesDeEnsino extends LeitorGenerico {
 
     public LeitorAtividadesDeEnsino(File entrada) throws IOException{
         super(entrada);
-        REGEX = "Atividades de orientação([\\p{L}\\s-\\d\\W]+)Atividades em projetos";
+        REGEX = "Atividades de ensino([\\p{L}\\s-\\d]+)Atividades de orientação";
     }
 
     @Override

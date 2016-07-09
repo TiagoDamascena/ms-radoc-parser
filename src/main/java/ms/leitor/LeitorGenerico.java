@@ -51,7 +51,7 @@ public abstract class LeitorGenerico {
 
         for(int i = 0; i < entrada.length; i++){
             entrada[i] = entrada[i].trim();
-            if(entrada[i] != ""){
+            if(!entrada[i].equals("")){
                 array.add(entrada[i].trim());
             }
         }
