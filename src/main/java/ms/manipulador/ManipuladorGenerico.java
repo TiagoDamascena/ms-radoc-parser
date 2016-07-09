@@ -12,182 +12,81 @@ import java.util.regex.Pattern;
 /**
  * Created by Tiago on 08/07/2016.
  */
-public class ManipuladorGenerico {
+public abstract class ManipuladorGenerico {
 
-    public static List<ModeloAtividade> buscarAtividadesDeEnsino(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+    String REGEX;
+    Pattern pattern;
+    List<ModeloAtividade> modelos;
 
-        String REGEX = "(.+) (\\d{1,3}) (\\d{4}) (\\d) [A-Z0-9]+ \\w*\\s?\\d{1,3} \\d \\d{1,3} \\d{1,3}";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
-
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(1);
-                int qtdHoras = Integer.parseInt(matcher.group(2));
-                int ano = Integer.parseInt(matcher.group(3));
-                int semestre = Integer.parseInt(matcher.group(4));
-                DateTime dtInicio;
-                DateTime dtFim;
-
-                if(semestre == 1) {
-                    dtInicio = new DateTime(ano, 1, 1, 0, 0);
-                    dtFim = new DateTime(ano, 7, 31, 0, 0);
-                } else {
-                    dtInicio = new DateTime(ano, 8, 1, 0, 0);
-                    dtFim = new DateTime(ano, 12, 31, 0, 0);
-                }
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
-        }
-
-        return modelos;
+    public ManipuladorGenerico() {
+        modelos = new ArrayList<ModeloAtividade>();
     }
 
-    public static List<ModeloAtividade> buscarAtividadesDeOrientacao(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+    public abstract List<ModeloAtividade> ExtrairAtividades(List<String> atividades);
 
-        String REGEX = "Título do trabalho:([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)Tabela:([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)Orientando:[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?CHA:\\s+(\\d+)\\s+Data início:\\s+(\\d+\\/\\d+\\/\\d+)[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?Data término:\\s+(\\d+\\/\\d+\\/\\d+)";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+    public ModeloAtividade MontarModeloGenerico(Matcher buscador) {
+        String descrição = buscador.group(1);
+        int qtdHoras = Integer.parseInt(buscador.group(2));
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+        DateTime dtInicio = formatter.parseDateTime(buscador.group(3));
+        DateTime dtFim = formatter.parseDateTime(buscador.group(4));
 
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(1) + " - " + matcher.group(2);
-                int qtdHoras = Integer.parseInt(matcher.group(3));
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-                DateTime dtInicio = formatter.parseDateTime(matcher.group(4));
-                DateTime dtFim = formatter.parseDateTime(matcher.group(5));
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
-        }
-
-        return modelos;
+        ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
+        return modelo;
     }
 
-    public static List<ModeloAtividade> buscarAtividadesEmProjetos(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+    public ModeloAtividade MontarModeloGenerico2(Matcher buscador) {
+        String descrição = buscador.group(1) + " - " + buscador.group(2);
+        int qtdHoras = Integer.parseInt(buscador.group(3));
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+        DateTime dtInicio = formatter.parseDateTime(buscador.group(4));
+        DateTime dtFim = formatter.parseDateTime(buscador.group(5));
 
-        String REGEX = "([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)\\s+Tabela:\\s+([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)Unidade Responsável:[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?CHA:\\s+(\\d+)\\s+Data Início:\\s+(\\d+\\/\\d+\\/\\d+)\\s+Data Término:\\s+(\\d+\\/\\d+\\/\\d+)";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
-
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(1) + " - " + matcher.group(2);
-                int qtdHoras = Integer.parseInt(matcher.group(3));
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-                DateTime dtInicio = formatter.parseDateTime(matcher.group(4));
-                DateTime dtFim = formatter.parseDateTime(matcher.group(5));
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
-        }
-
-        return modelos;
+        ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
+        return modelo;
     }
 
-    public static List<ModeloAtividade> buscarAtividadesDeExtensao(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+    public ModeloAtividade MontarModeloAtividadesDeEnsino(Matcher buscador) {
+        String descrição = buscador.group(1);
+        int qtdHoras = Integer.parseInt(buscador.group(2));
+        int ano = Integer.parseInt(buscador.group(3));
+        int semestre = Integer.parseInt(buscador.group(4));
+        DateTime dtInicio;
+        DateTime dtFim;
 
-        String REGEX = ".+?CHA:.+?(\\d+).+?Data início:.+?(\\d+\\/\\d+\\/\\d+).+?Data término:.+?(\\d+\\/\\d+\\/\\d+).+?Descrição da atividade:.+?(.+).+?Descrição da clientela:.+?(.+)";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
-
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(4) + " - " + matcher.group(5);
-                int qtdHoras = Integer.parseInt(matcher.group(1));
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-                DateTime dtInicio = formatter.parseDateTime(matcher.group(2));
-                DateTime dtFim = formatter.parseDateTime(matcher.group(3));
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
+        if(semestre == 1) {
+            dtInicio = new DateTime(ano, 1, 1, 0, 0);
+            dtFim = new DateTime(ano, 7, 31, 0, 0);
+        } else {
+            dtInicio = new DateTime(ano, 8, 1, 0, 0);
+            dtFim = new DateTime(ano, 12, 31, 0, 0);
         }
 
-        return modelos;
+        ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
+        return modelo;
     }
 
-    public static List<ModeloAtividade> buscarAtividadesDeQualificacao(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+    public ModeloAtividade MontarModeloAtividadesDeExtensao(Matcher buscador) {
+        String descrição = buscador.group(4) + " - " + buscador.group(5);
+        int qtdHoras = Integer.parseInt(buscador.group(1));
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+        DateTime dtInicio = formatter.parseDateTime(buscador.group(2));
+        DateTime dtFim = formatter.parseDateTime(buscador.group(3));
 
-        String REGEX = "\\s+[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?Descrição:\\s+([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)CHA:\\s+(\\d+)\\s+Data de início:\\s+(\\d{2}\\/\\d{2}\\/\\d{4})\\s+Data de término:\\s+(\\d{2}\\/\\d{2}\\/\\d{4})";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+        ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
 
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(1);
-                int qtdHoras = Integer.parseInt(matcher.group(2));
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-                DateTime dtInicio = formatter.parseDateTime(matcher.group(3));
-                DateTime dtFim = formatter.parseDateTime(matcher.group(4));
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
-        }
-
-        return modelos;
+        return modelo;
     }
 
-    public static List<ModeloAtividade> buscarAtividadesAcademicasEspeciais(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+    public ModeloAtividade MontarModeloAtividadesAcademicasEspeciais(Matcher buscador) {
+        String descrição = buscador.group(1) + " - " + buscador.group(5) + " - " + buscador.group(6);
+        int qtdHoras = Integer.parseInt(buscador.group(2));
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+        DateTime dtInicio = formatter.parseDateTime(buscador.group(3));
+        DateTime dtFim = formatter.parseDateTime(buscador.group(4));
 
-        String REGEX = "(.+?)CHA:.+?(\\d+).+?Data início:.+?(\\d{2}\\/\\d{2}\\/\\d{4}).+?Data término:.+?(\\d{2}\\/\\d{2}\\/\\d{4}).+?Descrição Complementar:.+?(.+?)Descrição da Clientela:(.+)";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+        ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
 
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(1) + " - " + matcher.group(5) + " - " + matcher.group(6);
-                int qtdHoras = Integer.parseInt(matcher.group(2));
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-                DateTime dtInicio = formatter.parseDateTime(matcher.group(3));
-                DateTime dtFim = formatter.parseDateTime(matcher.group(4));
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
-        }
-
-        return modelos;
-    }
-
-    public static List<ModeloAtividade> buscarAtividadesAdministrativas(List<String> atividades) {
-        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
-
-        String REGEX = "([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)Descrição:\\s+([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)Órgão emissor[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?CHA:\\s+(\\d+)\\s+Data início:\\s+(\\d{2}\\/\\d{2}\\/\\d{4})\\s+Data término:\\s+(\\d{2}\\/\\d{2}\\/\\d{4})";
-        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
-
-        for(String atividade: atividades) {
-            Matcher matcher = pattern.matcher(atividade);
-
-            if (matcher.find()) {
-                String descrição = matcher.group(1) + " - " + matcher.group(2);
-                int qtdHoras = Integer.parseInt(matcher.group(3));
-                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
-                DateTime dtInicio = formatter.parseDateTime(matcher.group(4));
-                DateTime dtFim = formatter.parseDateTime(matcher.group(5));
-
-                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
-                modelos.add(modelo);
-            }
-        }
-
-        return modelos;
+        return modelo;
     }
 }
