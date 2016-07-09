@@ -1,30 +1,28 @@
 package ms.manipulador;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Date;
-
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
 
 /**
  * Created by Bruno on 07/07/2016.
+ *
+ * Classe que representa o modelo de uma atividade
  */
 public class ModeloAtividade {
-    private static int contadorAtividade = 0;
+    private static int contadorAtividade;
+
     private int sequencialAtividade;
     private char[] descricaoAtividade;
     private String qtdeHorasAtividade;
     private DateTime dtInicioAtividade;
     private DateTime dtFimAtividade;
 
-
-
     /**
      * Construtor de atividades que não contenham o dado CHA
-     * @param descricaoAtividade
-     * @param dtInicioAtividade
-     * @param dtFimAtividade
+     * @param descricaoAtividade descrição da atividade
+     * @param dtInicioAtividade data de início da atividade
+     * @param dtFimAtividade data de término da atividade
      */
     public ModeloAtividade(String descricaoAtividade, DateTime dtInicioAtividade,DateTime dtFimAtividade){
         this.sequencialAtividade = ++contadorAtividade;
@@ -36,10 +34,10 @@ public class ModeloAtividade {
 
     /**
      * Construtor de atividade que contém todos os dados necessários
-     * @param descricaoAtividade
-     * @param qtdeHorasAtividade
-     * @param dtInicioAtividade
-     * @param dtFimAtividade
+     * @param descricaoAtividade descrição da atividade
+     * @param qtdeHorasAtividade carga horária anual da atividade
+     * @param dtInicioAtividade data de início da atividade
+     * @param dtFimAtividade data de término da atividade
      */
     public ModeloAtividade(String descricaoAtividade, int qtdeHorasAtividade, DateTime dtInicioAtividade,DateTime dtFimAtividade){
         this.sequencialAtividade = ++contadorAtividade;
@@ -59,7 +57,7 @@ public class ModeloAtividade {
 
 
     /**
-     * Padroniza todos os tamanhos de Strings para 512 caracteres adicionando pontos no final do nome da atividade
+     * Padroniza todos os tamanhos de Strings para 512 caracteres adicionando pontos no final da descrição da atividade
      * @param descricaoAtividade
      */
     private void popularArrayChar(String descricaoAtividade){
