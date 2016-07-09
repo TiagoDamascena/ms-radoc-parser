@@ -118,4 +118,28 @@ public class ManipuladorGenerico {
 
         return modelos;
     }
+
+    public static List<ModeloAtividade> buscarAtividadesDeQualificacao(List<String> atividades) {
+        List<ModeloAtividade> modelos = new ArrayList<ModeloAtividade>();
+
+        String REGEX = "\\s+[\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?Descrição:\\s+([\\s\\d\\p{L}\\/\\-\\.\\_\\:\\,\\>\\=\\<\\(\\'\\\"\\@\\!\\)]+?)CHA:\\s+(\\d+)\\s+Data de início:\\s+(\\d{2}\\/\\d{2}\\/\\d{4})\\s+Data de término:\\s+(\\d{2}\\/\\d{2}\\/\\d{4})";
+        Pattern pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+
+        for(String atividade: atividades) {
+            Matcher matcher = pattern.matcher(atividade);
+
+            if (matcher.find()) {
+                String descrição = matcher.group(1);
+                int qtdHoras = Integer.parseInt(matcher.group(2));
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("dd/MM/yyyy");
+                DateTime dtInicio = formatter.parseDateTime(matcher.group(3));
+                DateTime dtFim = formatter.parseDateTime(matcher.group(4));
+
+                ModeloAtividade modelo = new ModeloAtividade(descrição, qtdHoras, dtInicio, dtFim);
+                modelos.add(modelo);
+            }
+        }
+
+        return modelos;
+    }
 }
