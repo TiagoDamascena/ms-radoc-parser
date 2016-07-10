@@ -8,6 +8,8 @@ import java.util.regex.Matcher;
 
 /**
  * Created by Tiago on 09/07/2016.
+ *
+ * Classe responsável por ler Atividades de Extensão
  */
 public class LeitorAtividadesDeExtensao extends LeitorGenerico {
 

@@ -1,15 +1,13 @@
 package ms.manipulador;
 
-import org.joda.time.DateTime;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by Tiago on 09/07/2016.
+ *
+ * Classe responsável por converter string de Atividades de Orientação em objetos
  */
 public class ManipuladorAtividadesDeOrientacao extends ManipuladorGenerico {
 

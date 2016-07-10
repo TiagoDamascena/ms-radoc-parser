@@ -1,7 +1,5 @@
 package ms.leitor;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,6 +8,8 @@ import java.util.regex.Matcher;
 
 /**
  * Created by Tiago on 09/07/2016.
+ *
+ * Classe responsável por ler Atividades de Ensino
  */
 public class LeitorAtividadesDeEnsino extends LeitorGenerico {
 

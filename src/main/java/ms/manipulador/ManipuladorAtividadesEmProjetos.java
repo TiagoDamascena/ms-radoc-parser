@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Tiago on 09/07/2016.
+ *
+ * Classe responsável por converter string de Atividades em Projetos em objetos
  */
 public class ManipuladorAtividadesEmProjetos extends ManipuladorGenerico {
 

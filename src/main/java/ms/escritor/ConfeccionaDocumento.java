@@ -1,9 +1,6 @@
 package ms.escritor;
 
 import ms.manipulador.ModeloAtividade;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -22,7 +19,7 @@ public class ConfeccionaDocumento {
     public static void popularDocumento(List<ModeloAtividade> modeloAtividadeList) throws IOException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         try{
-            FileWriter atividadesExtraídas = new FileWriter(new File((System.getProperty("user.dir")),"AtividadesExtraídas.txt"));
+            FileWriter atividadesExtraídas = new FileWriter(new File("AtividadesExtraídas.txt"));
             PrintWriter printWriter = new PrintWriter(atividadesExtraídas);
             for(ModeloAtividade atividade :modeloAtividadeList) {
                 printWriter.println("Id da Atividade = "+atividade.getSequencialAtividade());
