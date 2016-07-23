@@ -40,7 +40,7 @@ public class LeitorAtividadesConsuni {
 
             Element category = (Element)i.next();
 
-            if(atividadeProcurada.equals(category.getAttributeValue("nome"))) {
+            if(atividadeProcurada.contains(category.getAttributeValue("nome"))) {
                return montarModelo(category);
             } else {
                 AtividadeConsuni atividadeConsuni = procuraFilhos(category, atividadeProcurada);
@@ -57,11 +57,20 @@ public class LeitorAtividadesConsuni {
 
         if(!childrens.isEmpty()){
             for (Element children : childrens){
-                if(atividadeProcurada.equals(children.getAttributeValue("nome"))){
+                if(children.getName().equals("pontos")) {
+                    break;
+                } else if(atividadeProcurada.equals(children.getAttributeValue("nome"))) {
                     return montarModelo(children);
                 }
+                else if(atividadeProcurada.contains(children.getAttributeValue("nome"))) {
+                    atividadeProcurada = atividadeProcurada.replace(children.getAttributeValue("nome"),"");
+                    return procuraFilhos(children, atividadeProcurada.trim());
+                }
                 else {
-                    return procuraFilhos(children, atividadeProcurada);
+                    AtividadeConsuni atividade = procuraFilhos(children, atividadeProcurada);
+                    if(atividade != null) {
+                        return atividade;
+                    }
                 }
             }
         }
