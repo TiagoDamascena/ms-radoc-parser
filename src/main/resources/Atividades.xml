@@ -1,0 +1,326 @@
+<?xml version="1.0"?>
+<atividades>
+    <atividade valor="001" nome="ATIVIDADE DE ENSINO">
+        <tipo valor="001" nome="Graduação">
+            <categoria valor="001" nome="Aulas presenciais na graduação">
+                <pontos>10x</pontos>
+            </categoria>
+            <categoria valor="002" nome="Aulas do ensino a distância na graduação">
+                <pontos>10x</pontos>
+            </categoria>
+        </tipo>
+        <tipo valor="002" nome="Pós-Graduação stricto e lato sensu">
+            <categoria valor="001" nome="Aulas presenciais na pós-graduação">
+                <pontos>10x</pontos>
+            </categoria>
+            <categoria valor="002" nome="Aulas do ensino a distância na pós-graduação">
+                <pontos>10x</pontos>
+            </categoria>
+        </tipo>
+    </atividade>
+    <atividade valor="002" nome="PRODUÇÃO INTELECTUAL">
+        <tipo valor="001" nome="Produção Científica">
+            <categoria valor="001" nome="Artigo completo ou texto literário  publicado em periódico">
+                <subcategoria valor="001" nome="Com classificação no Qualis/CAPES">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Não sujeito à classificação no Qualis/CAPES">
+                    <pontos>10</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="002" nome="Resumo de artigo em periódicos especializados nacional ou internacional com corpo editorial">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="003" nome="Artigos ou textos literários em repositórios de publicação eletrônica ligados a editoras ou universidades (total máximo a ser considerado neste item são 10 pontos)">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="004" nome="Resumo expandido publicado em anais (total máximo a ser considerado neste item são 10 pontos) de congresso">
+                <subcategoria valor="001" nome="Internacional">
+                    <pontos>8</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Nacional">
+                    <pontos>6</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Regional ou Local">
+                    <pontos>4</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="005" nome="Resumo simples publicado em anais (total máximo a ser considerado neste item são 10 pontos) de congresso">
+                <subcategoria valor="001" nome="Internacional">
+                    <pontos>4</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Nacional">
+                    <pontos>3</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Regional ou Local">
+                    <pontos>2</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="006" nome="Trabalho completo publicado em anais de congresso cientifico">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="007" nome="Editor ou Coordenador editorial  de livro publicado com selo de editora que possua corpo editorial">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="008" nome="Livro publicado com selo de editora que possua corpo editorial">
+                <pontos>40</pontos>
+            </categoria>
+            <categoria valor="009" nome="Livro publicado com selo de editora que não possua corpo editorial">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="010" nome="Capítulo de livro publicado com selo de editora que possua corpo editorial  (total máximo a ser considerado neste item são 40 pontos)">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="011" nome="Edição ou organização de livro (coletânea) publicado com selo de editora que possua corpo editorial">
+                <pontos>12</pontos>
+            </categoria>
+            <categoria valor="012" nome="Capítulo traduzido de livro publicado com selo de editora que possua corpo editorial (total máximo a ser considerado neste item são 20 pontos)">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="013" nome="Tradução ou revisão científica de livro traduzido e publicado com selo de editora  que possua corpo editorial">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="014" nome="Resenhas, prefácios ou verbetes">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="015" nome="Livro didático desenvolvido para projetos institucionais/governamentais">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="016" nome="Editor de periódicos especializados indexados com corpo editorial">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="017" nome="Editor de jornais ou revistas com distribuição">
+                <subcategoria valor="001" nome="Local ou Regional">
+                    <pontos>15</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Nacional">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Internacional">
+                    <pontos>20</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="018" nome="Dissertação de Mestrado defendida de aprovada (sendo o docente o autor da dissertação)">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="019" nome="Tese de Doutorado defendida e aprovada (sendo o docente o autor da tese)">
+                <pontos>15</pontos>
+            </categoria>
+        </tipo>
+        <tipo valor="002" nome="Produção Artística e Cultural">
+            <categoria valor="001" nome="Criação, produção e direção de filmes, vídeos, discos, audiovisuais, coreografias, peças teatrais, óperas ou musicais, ou musicais apresentados em eventos">
+                <subcategoria valor="001" nome="Locais ou Regionais">
+                    <pontos>15</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Nacionais">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Internacionais">
+                    <pontos>20</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="002" nome="Criação e produção do projeto gráfico de livros: concepção gráfica (mancha gráfica, diagramação, escolha de fonte)">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="003" nome="Design (gráfico, de luz, de figurino e formas animadas, cenográfico e similares)">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="004" nome="Design de impressos por peça (limitados a 20 pontos)">
+                <pontos>1</pontos>
+            </categoria>
+            <categoria valor="005" nome="Design de interfaces digitais">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="006" nome="Design de interfaces digitais com inovação tecnológica">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="007" nome="Produtos com inovação tecnológica">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="008" nome="Exposições e apresentações artísticas locais ou regionais">
+                <subcategoria valor="001" nome="Participação individual, camerista, solista ou ator principal">
+                    <pontos>16</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Participação coletiva ou coadjuvante">
+                    <pontos>5</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="009" nome="Exposições e apresentações artísticas nacionais">
+                <subcategoria valor="001" nome="Participação individual, camerista, solista ou ator principal">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Participação coletiva ou coadjuvante">
+                    <pontos>10</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="010" nome="Exposições e apresentações artísticas internacionais">
+                <subcategoria valor="001" nome="Participação individual, camerista, solista ou ator principal">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Participação coletiva ou coadjuvante">
+                    <pontos>15</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="011" nome="Composições musicais">
+                <subcategoria valor="001" nome="Editadas">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Publicadas em revistas científicas">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Gravadas">
+                    <pontos>15</pontos>
+                </subcategoria>
+                <subcategoria valor="004" nome="Executadas em apresentações públicas ">
+                    <pontos>15</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria alor="012" nome="Produção artística, arquitetônica ou de design premiada em evento">
+                <subcategoria valor="001" nome="Local ou Regional">
+                    <pontos>5</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Nacional">
+                    <pontos>10</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Internacional">
+                    <pontos>15</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria alor="013" nome="Arranjos musicais (canto, coral e orquestral)">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria alor="014" nome="Apresentação artística ou cultural em rádio ou TV">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria alor="015" nome="Sonoplastia (cinema, música, rádio, televisão, teatro)">
+                <pontos>3</pontos>
+            </categoria>
+        </tipo>
+        <tipo valor="003" nome="Produção Técnica e Tecnológica">
+            <categoria valor="001" nome="Desenvolvimento de programa de computador (software) com registro no INPI ou com ampla disponibilização em ambientes de software livre">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="002" nome="Desenvolvimento de software com divulgação em periódicos indexados e com corpo editorial ou em anais de congresso científico">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="003" nome="Desenvolvimento de software para uso institucional (total máximo a ser considerado neste item são 10 pontos) ">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="004" nome="Desenvolvimento e registro no INPI de topografia de circuito integrado">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="005" nome="Desenvolvimento de produto, processo ou técnica com registro de patente no INPI ou modelo de utilidade">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="006" nome="Desenvolvimento e registro no INPI de desenho industrial">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="007" nome="Desenvolvimento e registro no INPI de processo de indicação geográfica">
+                <pontos>20</pontos>
+            </categoria>
+            <categoria valor="008" nome="Desenvolvimento e registro no INPI de marcas">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="009" nome="Participação em comitê editorial de periódicos especializados indexados e de editoras universitárias ">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="010" nome="Parecer de consultoria ad hoc em comitês de avaliação de concursos e editais de publicação de livros de editoras com corpo editorial">
+                <pontos>3</pontos>
+            </categoria>
+            <categoria valor="011" nome="Parecer de consultoria ad hoc para periódicos especializados com corpo editorial ou para instituições de fomento à pesquisa ou para livros de editoras com corpo editorial">
+                <pontos>3</pontos>
+            </categoria>
+            <categoria valor="012" nome="Projeto, parecer ou relatório técnico realizado em consultoria ou assessoria oficializada por convite, convênio, contrato ou designação">
+                <subcategoria valor="001" nome="Parecer com anotação de responsabilidade técnica (ART) ou registro de responsabilidade técnica (RRT)">
+                    <pontos>10</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Parecer sem anotação de responsabilidade técnica (ART) ou registro de responsabilidade técnica (RRT)">
+                    <pontos>5</pontos>
+                </subcategoria>
+                <subcategoria valor="003" nome="Projeto ou Relatório Técnico com anotação de responsabilidade técnica (ART) ou registro de responsabilidade técnica (RRT)">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="004" nome="Projeto ou Relatório Técnico sem anotação de responsabilidade técnica (ART) ou registro de responsabilidade técnica (RRT)">
+                    <pontos>10</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="013" nome="Anais, Manuais, catálogos, boletins, com ficha bibliográfica (organizador / redator)">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="014" nome="Produção e publicação de mapas, cartas ou similares">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="015" nome="Desenvolvimento de maquete">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="016" nome="Manutenção de obra artística">
+                <subcategoria valor="001" nome="Restauração de obra artística">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Conservação de obra artística">
+                    <pontos>10</pontos>
+                </subcategoria>
+            </categoria>
+            <categoria valor="017" nome="Curadoria de exposições">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="018" nome="Produção de cinema, vídeo, rádio, TV ou mídias digitais">
+                <subcategoria valor="001" nome="Editor">
+                    <pontos>20</pontos>
+                </subcategoria>
+                <subcategoria valor="002" nome="Participante">
+                    <pontos>3</pontos>
+                </subcategoria>
+            </categoria>
+        </tipo>
+        <tipo valor="004" nome="Outro Tipo de Produção">
+            <categoria valor="001" nome="Artigos de opinião veiculados em jornais e revistas (eletrônico ou impresso)">
+                <pontos>1</pontos>
+            </categoria>
+            <categoria valor="002" nome="Texto ou material didático para uso institucional (não fracionados e com ampla divulgação)">
+                <pontos>2</pontos>
+            </categoria>
+            <categoria valor="003" nome="Artigos de divulgação científica, tecnológica e artística veiculados em jornais e revistas (eletrônico ou impresso)">
+                <pontos>3</pontos>
+            </categoria>
+            <categoria valor="004" nome="Apresentação oral de trabalho publicado em anais de congresso científico (total máximo a ser considerado neste item são 9 pontos)">
+                <pontos>3</pontos>
+            </categoria>
+            <categoria valor="005" nome="Apresentação em painel de trabalho publicado em anais de congresso científico (total máximo a ser considerado neste item são 3 pontos)">
+                <pontos>1</pontos>
+            </categoria>
+            <categoria valor="006" nome="Trabalho premiado em evento científico nacional ou internacional">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="007" nome="Tese, dissertação e trabalho de iniciação científica premiados por instituições de fomento (sendo o docente o autor ou orientador do produto)">
+                <pontos>8</pontos>
+            </categoria>
+        </tipo>
+    </atividade>
+    <atividade valor="003" nome="ATIVIDADES DE PESQUISA E EXTENSÃO">
+        <tipo valor="001" nome=" Atividades de Coordenação de Pesquisa">
+            <categoria valor="001" nome="Coordenador de projeto conjuntos de pesquisa e cooperação científica (tipo PRODOC, PROCAD, PNPD, entre outros) e de cursos MINTER e DINTER aprovados por órgãos oficiais de fomento ">]
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="002" nome="Coordenador de projeto de pesquisa aprovado com comprovação de financiamento (exceto bolsas) ">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="003" nome="Coordenador de projeto de pesquisa aprovado sem financiamento (total máximo a ser considerado neste item são 10 pontos) ">
+                <pontos>5</pontos>
+            </categoria>
+        </tipo>
+        <tipo valor="002" nome=" Atividades de Extensão ">
+            <categoria valor="001" nome="Coordenador de projeto de extensão aprovado com comprovação de financiamento (exceto bolsas) ">
+                <pontos>10</pontos>
+            </categoria>
+            <categoria valor="002" nome="Coordenador de projeto ou programa de extensão/cultura cadastrado na PROEC (total máximo a ser considerado neste item são 15 pontos) ">
+                <pontos>5</pontos>
+            </categoria>
+            <categoria valor="003" nome="Coordenador de contratos e de convênios de cooperação institucional internacional">
+                <pontos>5</pontos>
+            </categoria>
+        </tipo>
+    </atividade>
+
+
+</atividades>
