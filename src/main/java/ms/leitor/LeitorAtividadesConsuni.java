@@ -17,42 +17,49 @@ import org.jdom2.input.SAXBuilder;
  */
 public class LeitorAtividadesConsuni {
 
+    private static LeitorAtividadesConsuni leitor = new LeitorAtividadesConsuni();
+
     /**
      *
      * @return
      * @throws JDOMException
      * @throws IOException
      */
-    public AtividadeConsuni buscarAtividade(String atividadeProcurada) throws JDOMException, IOException, URISyntaxException {
-        ClassLoader classLoader = this.getClass().getClassLoader();
-        URI uri = classLoader.getResource("Atividades.xml").toURI();
-        File file = new File(uri);
+    public static AtividadeConsuni buscarAtividade(String atividadeProcurada) {
+        ClassLoader classLoader = leitor.getClass().getClassLoader();
+        try {
+            URI uri = classLoader.getResource("Atividades.xml").toURI();
+            File file = new File(uri);
 
-        SAXBuilder sb = new SAXBuilder();
-        Document doc = sb.build(file);
+            SAXBuilder sb = new SAXBuilder();
+            Document doc = sb.build(file);
 
-        Element categories = doc.getRootElement();
+            Element categories = doc.getRootElement();
 
-        List elements = categories.getChildren();
-        Iterator i = elements.iterator();
+            List elements = categories.getChildren();
+            Iterator i = elements.iterator();
 
-        while(i.hasNext()){
+            while(i.hasNext()){
 
-            Element category = (Element)i.next();
+                Element category = (Element)i.next();
 
-            if(atividadeProcurada.contains(category.getAttributeValue("nome"))) {
-               return montarModelo(category);
-            } else {
-                AtividadeConsuni atividadeConsuni = procuraFilhos(category, atividadeProcurada);
-                if(atividadeConsuni != null) {
-                    return atividadeConsuni;
+                if(atividadeProcurada.contains(category.getAttributeValue("nome"))) {
+                    return montarModelo(category);
+                } else {
+                    AtividadeConsuni atividadeConsuni = procuraFilhos(category, atividadeProcurada);
+                    if(atividadeConsuni != null) {
+                        return atividadeConsuni;
+                    }
                 }
             }
+        } catch (Exception ex) {
+            System.out.println("Problema ao ler o arquivo");
         }
+
         return null;
     }
 
-    private AtividadeConsuni procuraFilhos(Element element, String atividadeProcurada){
+    private static AtividadeConsuni procuraFilhos(Element element, String atividadeProcurada){
         List<Element> childrens = element.getChildren();
 
         if(!childrens.isEmpty()){
@@ -77,7 +84,7 @@ public class LeitorAtividadesConsuni {
         return null;
     }
 
-    private String montaCodigo(Element element){
+    private static String montaCodigo(Element element){
         String cod = new String();
         cod = element.getAttributeValue("valor");
 
@@ -92,7 +99,7 @@ public class LeitorAtividadesConsuni {
         }
     }
 
-    private AtividadeConsuni montarModelo(Element element) {
+    private static AtividadeConsuni montarModelo(Element element) {
         AtividadeConsuni atividade = new AtividadeConsuni();
         atividade.setCodigo(montaCodigo(element));
         Element pontos = element.getChild("pontos");
