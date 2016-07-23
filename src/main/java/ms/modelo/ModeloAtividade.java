@@ -77,6 +77,10 @@ public class ModeloAtividade {
     private void setCodGrupoPontuacao(String codGrupoPontuacao) {
         if(codGrupoPontuacao.length() > 12) {
             codGrupoPontuacao = codGrupoPontuacao.substring(0, 11);
+        } else if (codGrupoPontuacao.length() < 12) {
+            for(int i = codGrupoPontuacao.length(); i < 12; i++) {
+                codGrupoPontuacao = codGrupoPontuacao+"0";
+            }
         }
 
         this.codGrupoPontuacao = codGrupoPontuacao.toCharArray();
