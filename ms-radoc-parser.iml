@@ -11,6 +11,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="fontbox-2.0.2" level="project" />
+    <orderEntry type="library" name="joda-time-2.9.4" level="project" />
+    <orderEntry type="library" name="pdfbox-2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.2" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />

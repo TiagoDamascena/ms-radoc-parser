@@ -1,5 +1,7 @@
 package ms.manipulador;
 
+import ms.modelo.ModeloAtividade;
+
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

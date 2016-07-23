@@ -1,4 +1,4 @@
-package ms.manipulador;
+package ms.modelo;
 
 import java.text.DecimalFormat;
 import org.joda.time.DateTime;
@@ -12,6 +12,8 @@ import org.joda.time.Duration;
 public class ModeloAtividade {
     private static int contadorAtividade;
 
+    private char[] codGrupoPontuacao;
+    private int pontos;
     private int sequencialAtividade;
     private char[] descricaoAtividade;
     private String qtdeHorasAtividade;
@@ -24,9 +26,11 @@ public class ModeloAtividade {
      * @param dtInicioAtividade data de início da atividade
      * @param dtFimAtividade data de término da atividade
      */
-    public ModeloAtividade(String descricaoAtividade, DateTime dtInicioAtividade,DateTime dtFimAtividade){
+    public ModeloAtividade(String codGrupoPontuacao, int pontos, String descricaoAtividade, DateTime dtInicioAtividade,DateTime dtFimAtividade){
+        this.setCodGrupoPontuacao(codGrupoPontuacao);
+        this.pontos = pontos;
         this.sequencialAtividade = ++contadorAtividade;
-        popularArrayChar(descricaoAtividade);
+        this.setDescricaoAtividade(descricaoAtividade);
         this.dtInicioAtividade = dtInicioAtividade;
         this.dtFimAtividade = dtFimAtividade;
         calcularCHA();
@@ -39,9 +43,11 @@ public class ModeloAtividade {
      * @param dtInicioAtividade data de início da atividade
      * @param dtFimAtividade data de término da atividade
      */
-    public ModeloAtividade(String descricaoAtividade, int qtdeHorasAtividade, DateTime dtInicioAtividade,DateTime dtFimAtividade){
+    public ModeloAtividade(String codGrupoPontuacao, int pontos, String descricaoAtividade, int qtdeHorasAtividade, DateTime dtInicioAtividade,DateTime dtFimAtividade){
+        this.setCodGrupoPontuacao(codGrupoPontuacao);
+        this.pontos = pontos;
         this.sequencialAtividade = ++contadorAtividade;
-        popularArrayChar(descricaoAtividade);
+        this.setDescricaoAtividade(descricaoAtividade);
         this.dtInicioAtividade = dtInicioAtividade;
         this.dtFimAtividade = dtFimAtividade;
         this.qtdeHorasAtividade = new DecimalFormat("#.##").format(qtdeHorasAtividade);
@@ -60,15 +66,31 @@ public class ModeloAtividade {
      * Padroniza todos os tamanhos de Strings para 512 caracteres adicionando pontos no final da descrição da atividade
      * @param descricaoAtividade
      */
-    private void popularArrayChar(String descricaoAtividade){
+    private void setDescricaoAtividade(String descricaoAtividade) {
 
-        for ( int i = descricaoAtividade.length(); i < 512 ; i++){
-            descricaoAtividade = descricaoAtividade+".";
+        if(descricaoAtividade.length() > 512) {
+            descricaoAtividade = descricaoAtividade.substring(0, 511);
         }
         this.descricaoAtividade = descricaoAtividade.toCharArray();
     }
 
+    private void setCodGrupoPontuacao(String codGrupoPontuacao) {
+        if(codGrupoPontuacao.length() > 12) {
+            codGrupoPontuacao = codGrupoPontuacao.substring(0, 11);
+        }
+
+        this.codGrupoPontuacao = codGrupoPontuacao.toCharArray();
+    }
+
     /*-----GETTERS-----*/
+
+    public char[] getCodGrupoPontuacao() {
+        return codGrupoPontuacao;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
 
     public int getSequencialAtividade() {
         return sequencialAtividade;

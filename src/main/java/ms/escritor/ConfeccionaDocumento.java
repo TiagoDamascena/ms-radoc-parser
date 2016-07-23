@@ -1,6 +1,6 @@
 package ms.escritor;
 
-import ms.manipulador.ModeloAtividade;
+import ms.modelo.ModeloAtividade;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.List;

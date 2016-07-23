@@ -1,6 +1,8 @@
 import ms.escritor.ConfeccionaDocumento;
 import ms.leitor.*;
 import ms.manipulador.*;
+import ms.modelo.ModeloAtividade;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
