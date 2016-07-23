@@ -1,6 +1,9 @@
 package ms.manipulador;
 
+import ms.leitor.LeitorAtividadesConsuni;
+import ms.modelo.AtividadeConsuni;
 import ms.modelo.ModeloAtividade;
+import org.joda.time.DateTime;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -19,18 +22,28 @@ public class ManipuladorAtividadesDeEnsino extends ManipuladorGenerico {
     }
 
     @Override
-    public List<ModeloAtividade> ExtrairAtividades(List<String> atividades) {
-        pattern = Pattern.compile(REGEX, Pattern.DOTALL);
+    public ModeloAtividade MontarModelo(Matcher buscador) {
+        String descrição = buscador.group(1);
+        int qtdHoras = Integer.parseInt(buscador.group(2));
+        int ano = Integer.parseInt(buscador.group(3));
+        int semestre = Integer.parseInt(buscador.group(4));
+        DateTime dtInicio;
+        DateTime dtFim;
 
-        for(String atividade: atividades) {
-            Matcher buscador = pattern.matcher(atividade);
+        AtividadeConsuni atividade = LeitorAtividadesConsuni.buscarAtividade("Aulas presenciais na graduação");
 
-            if (buscador.find()) {
-                ModeloAtividade modelo = MontarModeloAtividadesDeEnsino(buscador);
-                modelos.add(modelo);
-            }
+        String codigo = atividade.getCodigo();
+        int pontos = Integer.parseInt(atividade.getPontos());
+
+        if(semestre == 1) {
+            dtInicio = new DateTime(ano, 1, 1, 0, 0);
+            dtFim = new DateTime(ano, 7, 31, 0, 0);
+        } else {
+            dtInicio = new DateTime(ano, 8, 1, 0, 0);
+            dtFim = new DateTime(ano, 12, 31, 0, 0);
         }
 
-        return modelos;
+        ModeloAtividade modelo = new ModeloAtividade(codigo, pontos, descrição, qtdHoras, dtInicio, dtFim);
+        return modelo;
     }
 }
